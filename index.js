@@ -30,3 +30,5 @@ fetch(`https://apps.kodim.cz/daweb/trening-api/apis/emails?folder=unread`)
 fetch(`https://apps.kodim.cz/daweb/trening-api/apis/emails?folder=read`)
   .then((response) => response.json())
   .then((data) => renderSection(data.emails, document.getElementById('read')));
+
+  
