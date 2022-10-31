@@ -2,16 +2,14 @@ console.log('funguju');
 
 const api = "https://apps.kodim.cz/daweb/trening-api/apis/emails"
 
-const showEmails = (data, variable) => {
-  console.log(variable);
-  let imageClass = 'opened'
-  if (variable === 'unread') {
-    imageClass = 'closed'
-  }
-
-  const element = document.getElementById(variable);
+const showEmails = (data, element) => {
 
   element.innerHTML = data.map((item) => {
+
+      let imageClass = 'opened';
+      if (item.unread) {
+        imageClass = 'closed'
+      }
 
       return `
         <div class="email">
@@ -32,8 +30,8 @@ const showEmails = (data, variable) => {
 
 fetch('https://apps.kodim.cz/daweb/trening-api/apis/emails?folder=unread')
 .then((response) => response.json())
-.then((data) => showEmails(data.emails, 'unread'));
+.then((data) => showEmails(data.emails, document.getElementById('unread')));
 
 fetch('https://apps.kodim.cz/daweb/trening-api/apis/emails?folder=read')
 .then((response) => response.json())
-.then((data) => showEmails(data.emails, 'read'));
+.then((data) => showEmails(data.emails, document.getElementById('read')));
