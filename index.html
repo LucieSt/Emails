@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  
   <title>E-maily</title>
-
   <script type="module" src="index.js"></script>
 </head>
+
 <body>
   <div id="app" class="container">
     <h1>Příchozí pošta</h1>
-    
-    <section class="inbox">
-      <h2>Nepřečtené</h2>
-      <div class="emails" id="unread"></div>
-    </section>
 
-    <section class="inbox">
-      <h2>Přečtené</h2>
-      <div class="emails" id="read"></div>
-    </section>
+    <div id="inbox" class="inbox">
+
+      <div>
+        <h1 class="category">Neprectene</h1>
+        <div id="unread"></div>
+      </div>
+
+      <br/>
+
+      <div>
+        <h1 class="category">Prectene</h1>
+        <div id="read"></div>
+      </div>
+      
+    </div>
   </div>
 </body>
+
 </html>
