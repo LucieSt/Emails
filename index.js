@@ -1,3 +1,6 @@
+
+import { Email } from './Email/index.js'
+
 console.log('funguju');
 
 const api = "https://apps.kodim.cz/daweb/trening-api/apis/emails"
@@ -6,24 +9,20 @@ const showEmails = (data, element) => {
 
   element.innerHTML = data.map((item) => {
 
-      let imageClass = 'opened';
-      if (item.unread) {
-        imageClass = 'closed'
-      }
+    const senderName = item.sender.name
+    const subject = item.subject
+    const time = item.time
+    const unread = item.unread
 
-      return `
-        <div class="email">
-          <div class="email__head">
-            <button class="email__icon email__icon--${imageClass}"></button>
-            <div class="email__info">
-              <div class="email__sender">${item.sender.name}</div>
-              <div class="email__subject">${item.subject}</div>
-            </div>
-            <div class="email__time">${item.time}</div>
-          </div>
-          <div class="email__body"></div>
-        </div>
-      `
+    const props = {
+      senderName,
+      subject,
+      time,
+      unread
+    }
+
+    return Email(props);
+
   }).join('');
   
 }
